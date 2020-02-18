@@ -106,6 +106,7 @@ var controller_learn_flashcard = function ($scope) {
     };
 
     _ctl.init = function (_callback) {
+        console.log('learn');
         var _qualifier;
         if (_status.history_stack.length > 0) {
             if (_status.history_index < 0) {
@@ -432,8 +433,8 @@ var controller_learn_flashcard = function ($scope) {
             setTimeout(function () {
                 
                 var _data = {
-                    q: _var.learn_flashcard.q
-                            //uuid: $scope.ctl_profile.get_uuid()
+                    q: _var.learn_flashcard.q,
+                    uuid: $scope.ctl_profile.get_uuid()
                 };
                 
                 //$.console_trace("現在有筆記嗎？", _var.learn_flashcard.note);
@@ -551,6 +552,7 @@ var controller_learn_flashcard = function ($scope) {
         if (typeof (_status.learned_stack) === "undefined") {
             return 0;
         }
+        //$.console_trace(_status.learned_stack);
         return _status.learned_stack.length;
     };
 
