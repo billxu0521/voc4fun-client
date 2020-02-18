@@ -92,7 +92,7 @@
             menu_click($event);">
             <ons-icon icon="ion-ios-compose-outline" fixed-width="true"></ons-icon>
             <span class="menu-label">
-                {{ 'TEST_SELECT_TITLE' | translate }}
+                {{ 'TEST_SELECT_TITLE' | translate }}{{ ctl_test_select.display_test_select_target() }}
             </span>
             <span class="right" style="float:right"
                   ng-class="{'target-incompleted': (ctl_target.status.test_select.done < ctl_target.status.test_select.target)}"
@@ -134,3 +134,4 @@
     </div>
 
 </ons-page>
+
