@@ -60,16 +60,16 @@ var controller_test_select = function ($scope) {
 
     // --------------------
     _ctl.display_test_select_target = function(){
-        console.log($scope.ctl_target.status.learn_flashcard.done);
         if($scope.ctl_target.status.learn_flashcard.done <= 5){
-            return '(需5字)'
+            
         }else{
             return;
         }
     }
 
     _ctl.enter = function (_callback, _do_animation) {
-        if($scope.ctl_target.status.learn_flashcard.done <= 5){
+        if($scope.ctl_target.status.learn_flashcard.done < 4){
+            alert('提醒:需先完成5個學習單字才可測驗');
             return;
         }
         // 讓選單保持在選取的狀態

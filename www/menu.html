@@ -89,10 +89,11 @@
         </ons-list-item>
 
         <ons-list-item ng-click="ctl_test_select.enter();
-            menu_click($event);">
+            menu_click($event);"
+            ng-class="{'testlimit': (ctl_target.status.learn_flashcard.done < 5)}">
             <ons-icon icon="ion-ios-compose-outline" fixed-width="true"></ons-icon>
             <span class="menu-label">
-                {{ 'TEST_SELECT_TITLE' | translate }}{{ ctl_test_select.display_test_select_target() }}
+                {{ 'TEST_SELECT_TITLE' | translate }}
             </span>
             <span class="right" style="float:right"
                   ng-class="{'target-incompleted': (ctl_target.status.test_select.done < ctl_target.status.test_select.target)}"
@@ -105,6 +106,15 @@
                     {{ ctl_target.menu_display_target("test_select", ctl_target.status.test_select.done, ctl_target.status.test_select.target) }}
                     <i class="ion-android-star" />
                 </span>
+            </span>
+        </ons-list-item>
+    </ons-list>
+
+        <ons-list-item ng-click="ctl_rank.enter();
+            menu_click($event);">
+            <ons-icon icon="ion-ios-compose-outline" fixed-width="true"></ons-icon>
+            <span class="menu-label">
+                排行
             </span>
         </ons-list-item>
     </ons-list>

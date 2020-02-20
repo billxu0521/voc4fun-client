@@ -106,9 +106,7 @@ var controller_profile = function ($scope) {
 //            var _fingerprint = new Fingerprint().get();
 //            _status.uuid = $.int_to_letters(_fingerprint);
             _status.uuid = $scope.db_log.get_uuid();
-            console.log(_status.uuid);
         }
-        console.log(_status.uuid);
         return _status.uuid;
     };
     /*原版

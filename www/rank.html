@@ -1,0 +1,35 @@
+<ons-page id="rank_html" 
+          class="rank-page"
+          ng-device-backbutton="main_back()" 
+          ng-init="">
+
+    <ons-toolbar>
+
+        <div class="left">
+            <ons-toolbar-button ng-click="app.menu.open()" class="menu-open">
+                <span class="toolbar-button--quiet navigation-bar__line-height" >
+                    <ons-icon icon="ion-navicon" fixed-width="true"></ons-icon>
+                </span>
+            </ons-toolbar-button>
+        </div>
+
+        <div class="center">
+            排行
+        </div>
+
+        
+    </ons-toolbar>
+
+    <div class="right"
+             ng-show="!CONFIG.control_group_version">
+            設定目標:{{ ctl_rank.var.yesterday_target_data.learn_flashcard.target }}
+            <br>
+            完成學習單字:{{ ctl_rank.var.yesterday_target_data.learn_flashcard.done }}
+            <br>
+            完成筆記數:{{ ctl_rank.var.yesterday_target_data.take_note.done }}
+            <br>
+            完成測驗量:{{ ctl_rank.var.yesterday_target_data.test_select.done }}
+            <br>
+        </div>
+</ons-page>
+

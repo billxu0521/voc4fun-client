@@ -92,6 +92,7 @@
     <script src="pulipuli-utils/js/cordova_text_to_speech.js"></script>
 
     <script src="js/controller_platform.js"></script>
+    <script src="js/controller_rank.js"></script>
     <script src="js/controller_profile.js"></script>
     <script src="js/controller_flashcard.js"></script>
     <script src="js/controller_target.js"></script>
@@ -102,16 +103,17 @@
     <script src="js/controller_notification.js"></script>
     <script src="js/controller_target_history.js"></script>
     <script src="js/controller_setting.js"></script>
+    <script src="js/controller_logincheck.js"></script>
 
     <script src="js/controller_test_select.js"></script>
 
     <script src="app_ready.js"></script>
 
 
-    <!-- cordova -->
+    <!-- cordova >
     <script src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8" src="tts.js"></script>
-    <script type="text/javascript" charset="utf-8" src="telephonenumber.js"></script>
+    <script type="text/javascript" charset="utf-8" src="telephonenumber.js"></script-->
 
     <!-- ========================================= -->
 
@@ -158,6 +160,8 @@
             controller_profile($scope);
             controller_flashcard($scope);
             controller_target($scope);
+            controller_logincheck($scope);
+            controller_rank($scope);
             controller_activity($scope);
             controller_learn_flashcard($scope);
             controller_note($scope);

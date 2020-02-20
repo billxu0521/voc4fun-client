@@ -140,17 +140,18 @@ var controller_target = function ($scope) {
             return;
         }
         //這邊先讀資料
-        _ctl.set_today_target_from_DB();
-        _ctl.set_today_done_from_DB('learn_flashcard');
-        _ctl.set_today_done_from_DB('take_note');
-        _ctl.set_today_done_from_DB('test_select');
+        _ctl.set_today_target_from_DB(function(){
+            _ctl.set_today_done_from_DB('learn_flashcard');
+            _ctl.set_today_done_from_DB('take_note');
+            _ctl.set_today_done_from_DB('test_select');
+        });
+        
 
 
         _ctl.period_target_exists(function (_today_exists) {
             _ctl.before_target_exists(-1, function (_yesterday_exists) {
                 var _page = "target_view.html";
                 //$.console_trace("exists", [_today_exists, _yesterday_exists]);
-                console.log([_today_exists, _yesterday_exists]);
                 if (_today_exists === false) {
                     //$.console_trace("今天沒有資料的情況", _yesterday_exists);
                     _ctl._init_target_data();
@@ -164,8 +165,6 @@ var controller_target = function ($scope) {
                         _page = "target_recommend.html";
                     }
                 }else{
-                    console.log('這邊就是要讀資料');
-                    
                     
                 }
 
@@ -223,7 +222,6 @@ var controller_target = function ($scope) {
             "min_timestamp": _ctl.get_period_start_timestamp(0),
             "max_timestamp": _ctl.get_period_end_timestamp(0),
             "callback": function (_data) {
-                console.log(_data);
                 if(_data == undefined){
                     for(var i in _data){
                         _status[i] = {
@@ -238,9 +236,8 @@ var controller_target = function ($scope) {
                             'done':0
                         };
                     }
-                    $.trigger_callback(_callback);
                 }
-                
+                $.trigger_callback(_callback);
             }
         });
         return this;
@@ -248,7 +245,6 @@ var controller_target = function ($scope) {
 
     _ctl.set_today_done_from_DB = function (_key,_callback) {
         var _function_name = "done_plus()";
-        console.log(_key);
         $scope.db_log.get_latest_log({
             "file_name": _log_file,
             "function_name": _function_name,
@@ -266,7 +262,6 @@ var controller_target = function ($scope) {
                 }else{
                     _status[_key]['done'] = _data['done'];
                 }
-                console.log(_status);
                 $.trigger_callback(_callback);
             }
         });
@@ -303,8 +298,7 @@ var controller_target = function ($scope) {
                 $.trigger_callback(_callback, _exists);
             }
         });
-        console.log('min_timestamp:' + _ctl.get_period_start_timestamp(_offset) +"/max_timestamp:"+ _ctl.get_period_end_timestamp(_offset));
-
+        
         return this;
     };
 
@@ -931,6 +925,7 @@ var controller_target = function ($scope) {
         //$.console_trace("get_yesterday_target_data()");
         //return _ctl.get_period_target_data(-1, _callback);
         return _ctl.get_before_target_data(-1, function (_data) {
+            $.console_trace(_data);
             if (_data !== undefined) {
                 _data = _data[0];
             }
@@ -987,7 +982,6 @@ var controller_target = function ($scope) {
     _ctl.get_period_target_data = function (_offset_day, _callback) {
         var _min_timestamp = _ctl.get_period_start_timestamp(_offset_day);
         var _max_timestamp = _ctl.get_period_end_timestamp(_offset_day);
-
         //var _target_data = {};
         //$.console_trace("_get_target_data_callback()", _target_data);
         var _get_target_data_callback = function (_data) {
@@ -1067,7 +1061,7 @@ var controller_target = function ($scope) {
         
         var _get_target_data_callback = function (_data) {
             //$.console_trace("_get_target_data_callback()");
-            
+            console.log(_data);
             if (_data === undefined) {
                 $.trigger_callback(_callback);
                 return;
@@ -1157,7 +1151,7 @@ var controller_target = function ($scope) {
     _ctl.display_target = function (_key, _done, _target) {
         
         var _max = _ctl.get_max_target(_key);
-        console.log(_key+'/'+_done+'/'+_target+'/'+_max);
+        
         if (_max === 0) {
             _target = 0;
         }

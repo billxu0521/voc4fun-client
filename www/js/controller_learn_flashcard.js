@@ -106,7 +106,6 @@ var controller_learn_flashcard = function ($scope) {
     };
 
     _ctl.init = function (_callback) {
-        console.log('learn');
         var _qualifier;
         if (_status.history_stack.length > 0) {
             if (_status.history_index < 0) {
